@@ -1,0 +1,238 @@
+/* الألوان والثوابت */
+:root {
+    /* تم تقليل السطوع لنيون أزرق معتدل */
+    --neon-blue: #33eaff; 
+    --neon-shadow: 0 0 4px var(--neon-blue),
+                   0 0 8px var(--neon-blue),
+                   0 0 12px rgba(51, 234, 255, 0.3); /* تأثير ظل أهدأ */
+    --bg-color: #0d1217; /* خلفية داكنة جداً */
+    --text-color: #e0f7fa;
+}
+
+/* التنسيقات الأساسية */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Cairo', sans-serif; /* استخدام خط Cairo */
+    transition: all 0.3s ease;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding: 20px;
+    direction: rtl; 
+    /* خلفية برمجية (Placeholder URL) */
+    background-image: url('https://placehold.co/1920x1080/0d1217/e0f7fa?text=Developer+Code'); 
+    background-size: cover;
+    background-attachment: fixed; 
+    background-blend-mode: multiply; /* لجعل الخلفية داكنة */
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 10px;
+}
+
+h2 {
+    color: var(--neon-blue);
+    text-shadow: 0 0 5px var(--neon-blue);
+    margin: 40px 0 20px;
+    text-align: center;
+    border-bottom: 2px solid rgba(51, 234, 255, 0.2);
+    padding-bottom: 10px;
+}
+
+/* ----------------------------------
+   تأثيرات النيون والمربعات (الأساسية)
+   ---------------------------------- */
+
+.neon-box {
+    background-color: rgba(30, 40, 50, 0.7); /* خلفية شفافة قليلاً */
+    border: 1px solid rgba(51, 234, 255, 0.3);
+    border-radius: 10px; 
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 0 6px rgba(51, 234, 255, 0.3); 
+}
+
+/* التأثير المطلوب عند التحويم (Hover) - حركة رفع بسيطة للأعلى */
+.neon-box:hover {
+    box-shadow: var(--neon-shadow);
+    /* حركة رفع بسيطة للأعلى (كأنها تخرج من الصفحة) */
+    transform: translateY(-8px) scale(1.01); 
+    cursor: pointer;
+    border-color: var(--neon-blue);
+    background-color: rgba(30, 40, 50, 0.9);
+}
+
+/* ----------------------------------
+   1. علامة المطور (Glitch Effect)
+   ---------------------------------- */
+.developer-tag {
+    text-align: center;
+    padding: 50px 20px 20px;
+    margin-top: 0;
+    background: none;
+    border: none;
+    box-shadow: none;
+}
+
+.glitch {
+    font-size: 3em;
+    font-weight: 700;
+    color: var(--neon-blue);
+    text-shadow: var(--neon-shadow);
+    position: relative;
+    letter-spacing: 2px;
+}
+
+/* تعريف تأثير Glitch */
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch::before {
+    left: 2px;
+    text-shadow: -2px 0 #ff00ff; 
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim-1 2s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    left: -2px;
+    text-shadow: -2px 0 #00ffff, 2px 0 #00ff00; 
+    clip: rect(65px, 450px, 85px, 0);
+    animation: glitch-anim-2 3s infinite linear alternate;
+}
+
+@keyframes glitch-anim-1 {
+    0% { clip: rect(24px, 450px, 35px, 0); }
+    50% { clip: rect(80px, 450px, 90px, 0); }
+    100% { clip: rect(50px, 450px, 60px, 0); }
+}
+
+@keyframes glitch-anim-2 {
+    0% { clip: rect(40px, 450px, 55px, 0); }
+    60% { clip: rect(70px, 450px, 80px, 0); }
+    100% { clip: rect(20px, 450px, 30px, 0); }
+}
+
+
+/* ----------------------------------
+   2. من أنا (About Me)
+   ---------------------------------- */
+#about .content p {
+    line-height: 2.0; 
+    margin-bottom: 12px;
+    font-size: 1.1em;
+}
+
+/* ----------------------------------
+   3. لغات البرمجة (Skills)
+   ---------------------------------- */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    text-align: center;
+}
+
+.skill-item i {
+    font-size: 3em;
+    transition: none; 
+}
+
+/* شريط التقدم */
+.progress-bar {
+    background-color: #333;
+    border-radius: 5px;
+    height: 12px;
+    margin: 10px 0;
+    overflow: hidden;
+    box-shadow: inset 0 0 3px #000;
+}
+
+.progress {
+    height: 100%;
+    border-radius: 5px;
+    box-shadow: 0 0 5px currentColor; 
+}
+
+/* ----------------------------------
+   4. طرق التواصل (Contact)
+   ---------------------------------- */
+.contact-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-color);
+    flex-basis: 350px; 
+    padding: 20px;
+}
+
+.contact-item i {
+    font-size: 2.5em;
+    margin-left: 15px;
+    color: var(--neon-blue);
+}
+
+.contact-item .handle {
+    font-weight: bold;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+}
+
+.contact-item .username {
+    font-size: 0.9em;
+    color: var(--neon-blue);
+    margin-top: 3px;
+    text-shadow: 0 0 2px var(--neon-blue);
+}
+
+/* علامة التوثيق (Verified Badge) */
+.verified {
+    color: var(--neon-blue);
+    font-size: 1.1em;
+    margin-right: 8px;
+    text-shadow: 0 0 5px var(--neon-blue);
+}
+
+/* ----------------------------------
+   حقوق النشر (Footer)
+   ---------------------------------- */
+footer {
+    text-align: center;
+    margin-top: 50px;
+    padding: 15px;
+    border-top: 1px solid rgba(51, 234, 255, 0.1);
+    color: #556677;
+    font-size: 0.9em;
+    font-family: 'Arial', sans-serif; 
+}
+
+/* تعديلات على الأجهزة الصغيرة */
+@media (max-width: 600px) {
+    .contact-grid {
+        flex-direction: column;
+    }
+    .glitch {
+        font-size: 2em;
+    }
+}
